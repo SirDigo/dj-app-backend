@@ -6,4 +6,12 @@
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::event.event');
+/**
+ *  product controller
+ */
+module.exports = createCoreController('api::event.event', {
+    count(ctx) {
+        var { query } = ctx.request
+        return strapi.entityService.count('api::event.event', query);
+    }
+});
